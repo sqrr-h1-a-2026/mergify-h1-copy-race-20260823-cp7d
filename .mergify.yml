@@ -1,5 +1,5 @@
 pull_request_rules:
-  - name: controlled approved-source copy cp7d
+  - name: controlled fork approved-source copy cp7d
     conditions:
       - label = h1-copy-approved-cp7d
       - base = main
@@ -8,11 +8,11 @@ pull_request_rules:
       copy:
         branches:
           - release
-  - name: controlled generated-copy merge cp7d
+  - name: controlled target-CI generated-copy merge cp7d
     conditions:
       - author = mergify[bot]
       - base = release
-      - label = h1-copy-merge-cp7d
+      - check-success = H1_COPY_RELEASE_CI_CP7D
     actions:
       merge:
         method: squash
